@@ -1,14 +1,11 @@
-const pool = require("./config/db");
+console.log("Server file started");
+require("dotenv").config();
+
 const app = require("./app");
-const PORT = 3000;
-pool.connect()
-  .then(() => {
-    console.log("Database Connected Successfully");
-  })
-  .catch((err) => {
-    console.error("Database Connection Failed");
-    console.error(err);
-  });
+
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log("Inside app.listen");
+    console.log(`Server running on port ${PORT}`);
 });
